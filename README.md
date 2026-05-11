@@ -2,8 +2,6 @@
 
 InsightDash is a high-performance, full-stack admin dashboard built with React, Vite, and Node.js. It features a sleek, modern UI with animated background gradients, responsive layouts, and real-time data visualization.
 
-![Dashboard Preview](https://raw.githubusercontent.com/lucide-react/lucide/main/icons/layout-dashboard.svg)
-
 ## 🚀 Features
 
 - **Full-Stack Authentication**: Secure Login and Signup flow using JWT (JSON Web Tokens) and password hashing with `bcryptjs`.
