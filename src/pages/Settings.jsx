@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Bell, Shield, User, Globe, Key, Smartphone, Mail, Lock } from 'lucide-react';
+import { Bell, Shield, User, Globe, Key, Smartphone, Mail, Lock, Eye, EyeOff } from 'lucide-react';
 import { cn } from '../utils/utils';
 import { useAppStore } from '../store/useAppStore';
 
@@ -11,6 +11,16 @@ const Settings = () => {
   const [emailNotifs, setEmailNotifs] = useState(true);
   const [pushNotifs, setPushNotifs] = useState(false);
   const [marketingNotifs, setMarketingNotifs] = useState(false);
+
+  // Password Visibility State
+  const [showCurrentPassword, setShowCurrentPassword] = useState(false);
+  const [showNewPassword, setShowNewPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  // Password Values
+  const [currentPassword, setCurrentPassword] = useState('');
+  const [newPassword, setNewPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
 
   const tabs = [
     { id: 'notifications', label: 'Notifications', icon: Bell },
@@ -187,9 +197,21 @@ const Settings = () => {
                     <div className="relative">
                       <Lock size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
                       <input 
-                        type="password" 
-                        className="w-full pl-10 pr-4 py-2 rounded-lg bg-background border border-border focus:outline-none focus:ring-2 focus:ring-primary/50 text-foreground"
+                        type={showCurrentPassword ? "text" : "password"} 
+                        value={currentPassword}
+                        onChange={(e) => setCurrentPassword(e.target.value)}
+                        placeholder="••••••••"
+                        className="w-full pl-10 pr-10 py-2 rounded-lg bg-background border border-border focus:outline-none focus:ring-2 focus:ring-primary/50 text-foreground focus:placeholder-transparent transition-all"
                       />
+                      {currentPassword.length > 0 && (
+                        <button
+                          type="button"
+                          onClick={() => setShowCurrentPassword(!showCurrentPassword)}
+                          className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
+                        >
+                          {showCurrentPassword ? <EyeOff size={16} /> : <Eye size={16} />}
+                        </button>
+                      )}
                     </div>
                   </div>
                   
@@ -199,9 +221,21 @@ const Settings = () => {
                       <div className="relative">
                         <Key size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
                         <input 
-                          type="password" 
-                          className="w-full pl-10 pr-4 py-2 rounded-lg bg-background border border-border focus:outline-none focus:ring-2 focus:ring-primary/50 text-foreground"
+                          type={showNewPassword ? "text" : "password"} 
+                          value={newPassword}
+                          onChange={(e) => setNewPassword(e.target.value)}
+                          placeholder="••••••••"
+                          className="w-full pl-10 pr-10 py-2 rounded-lg bg-background border border-border focus:outline-none focus:ring-2 focus:ring-primary/50 text-foreground focus:placeholder-transparent transition-all"
                         />
+                        {newPassword.length > 0 && (
+                          <button
+                            type="button"
+                            onClick={() => setShowNewPassword(!showNewPassword)}
+                            className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
+                          >
+                            {showNewPassword ? <EyeOff size={16} /> : <Eye size={16} />}
+                          </button>
+                        )}
                       </div>
                     </div>
                     <div className="space-y-1.5">
@@ -209,9 +243,21 @@ const Settings = () => {
                       <div className="relative">
                         <Key size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
                         <input 
-                          type="password" 
-                          className="w-full pl-10 pr-4 py-2 rounded-lg bg-background border border-border focus:outline-none focus:ring-2 focus:ring-primary/50 text-foreground"
+                          type={showConfirmPassword ? "text" : "password"} 
+                          value={confirmPassword}
+                          onChange={(e) => setConfirmPassword(e.target.value)}
+                          placeholder="••••••••"
+                          className="w-full pl-10 pr-10 py-2 rounded-lg bg-background border border-border focus:outline-none focus:ring-2 focus:ring-primary/50 text-foreground focus:placeholder-transparent transition-all"
                         />
+                        {confirmPassword.length > 0 && (
+                          <button
+                            type="button"
+                            onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                            className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
+                          >
+                            {showConfirmPassword ? <EyeOff size={16} /> : <Eye size={16} />}
+                          </button>
+                        )}
                       </div>
                     </div>
                   </div>

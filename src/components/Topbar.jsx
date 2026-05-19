@@ -153,7 +153,7 @@ const Topbar = () => {
                 <button 
                   onClick={() => {
                     setShowNotifs(false);
-                    navigate('/settings');
+                    navigate('/dashboard/settings');
                   }} 
                   className="text-sm text-primary font-medium hover:underline"
                 >

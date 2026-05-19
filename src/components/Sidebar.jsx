@@ -33,7 +33,7 @@ const Sidebar = () => {
       {/* Sidebar */}
       <aside
         className={cn(
-          "fixed lg:static inset-y-0 left-0 z-30 w-64 glass shadow-xl transform transition-transform duration-300 ease-in-out flex flex-col",
+          "fixed lg:static inset-y-0 left-0 z-30 w-64 glass shadow-xl transform transition-all duration-300 ease-in-out flex flex-col",
           isSidebarOpen ? "translate-x-0" : "-translate-x-full lg:hidden"
         )}
       >
